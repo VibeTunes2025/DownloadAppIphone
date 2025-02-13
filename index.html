@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download App!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Keyframes for container fade-in */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    /* Bounce animation for the logo */
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
+    /* Bounce animation for the open icon */
+    @keyframes iconBounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-3px);
+      }
+    }
+    /* Animation for bubbles rising from bottom */
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(-110vh);
+        opacity: 0;
+      }
+    }
+    /* Animation for bubbles falling from top */
+    @keyframes floatDown {
+      0% {
+        transform: translateY(0);
+        opacity: 0;
+      }
+      50% {
+        opacity: 0.7;
+      }
+      100% {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+    body {
+      background-color: #4A484F;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      position: relative;
+    }
+    /* Bubble container styles */
+    .bubbles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .bubbles.top {
+      top: 0;
+    }
+    .bubbles.bottom {
+      bottom: 0;
+    }
+    .bubble {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.6);
+      border-radius: 50%;
+      animation-duration: 6s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+    .bubbles.top .bubble {
+      top: -50px;
+      animation-name: floatDown;
+    }
+    .bubbles.bottom .bubble {
+      bottom: -50px;
+      animation-name: floatUp;
+    }
+    /* Main container above bubbles */
+    .container {
+      background: #FFF3E3;
+      border-radius: 20px;
+      padding: 30px 40px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      animation: fadeIn 1.2s ease-in-out;
+      position: relative;
+      z-index: 1;
+      margin-top: 20px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .header img.logo {
+      width: 60px;
+      height: 60px;
+      margin-right: 15px;
+      border: 3px solid #EFA02E;
+      border-radius: 30%; /* Rounded corners */
+      padding: 5px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      animation: bounce 2s infinite;
+    }
+    .header h1 {
+      font-size: 22px;
+      color: #333;
+      margin: 0;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    /* Open App button styles */
+    .open-btn {
+      background-color: #EFA02E;
+      color: #fff;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      font-size: 18px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: background 0.3s ease, transform 0.3s ease;
+      margin-top: 20px;
+    }
+    .open-btn:hover {
+      background-color: #d98d1f;
+      transform: scale(1.05);
+    }
+    .open-icon {
+      width: 24px;
+      height: 24px;
+      margin-left: 10px;
+      stroke: #fff;
+      fill: none;
+      animation: iconBounce 1.5s infinite;
+    }
+    /* Instructions container: right-to-left formatting with light gray background */
+    .instructions {
+      text-align: right;
+      direction: rtl;
+      margin-top: 20px;
+      background: #f0f0f0;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #333;
+    }
+    .instructions h2 {
+      margin-top: 0;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .instructions ol {
+      padding-right: 20px;
+      margin: 0;
+    }
+    .instructions li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Bubbles from Top -->
+  <div class="bubbles top">
+    <div class="bubble" style="width: 15px; height: 15px; left: 5%; animation-delay: 0s;"></div>
+    <div class="bubble" style="width: 25px; height: 25px; left: 20%; animation-delay: 1s;"></div>
+    <div class="bubble" style="width: 20px; height: 20px; left: 40%; animation-delay: 0.5s;"></div>
+    <div class="bubble" style="width: 30px; height: 30px; left: 65%; animation-delay: 1.5s;"></div>
+    <div class="bubble" style="width: 18px; height: 18px; left: 80%; animation-delay: 0.8s;"></div>
+    <div class="bubble" style="width: 22px; height: 22px; left: 50%; animation-delay: 2s;"></div>
+    <div class="bubble" style="width: 28px; height: 28px; left: 35%; animation-delay: 0.3s;"></div>
+    <div class="bubble" style="width: 16px; height: 16px; left: 75%; animation-delay: 1.8s;"></div>
+  </div>
+  <!-- Bubbles from Bottom -->
+  <div class="bubbles bottom">
+    <div class="bubble" style="width: 15px; height: 15px; left: 10%; animation-delay: 0.5s;"></div>
+    <div class="bubble" style="width: 25px; height: 25px; left: 30%; animation-delay: 1s;"></div>
+    <div class="bubble" style="width: 20px; height: 20px; left: 55%; animation-delay: 0.2s;"></div>
+    <div class="bubble" style="width: 30px; height: 30px; left: 70%; animation-delay: 1.5s;"></div>
+    <div class="bubble" style="width: 18px; height: 18px; left: 85%; animation-delay: 0.8s;"></div>
+    <div class="bubble" style="width: 22px; height: 22px; left: 40%; animation-delay: 2s;"></div>
+    <div class="bubble" style="width: 28px; height: 28px; left: 25%; animation-delay: 0.3s;"></div>
+    <div class="bubble" style="width: 16px; height: 16px; left: 60%; animation-delay: 1.8s;"></div>
+  </div>
+  <!-- Main Container -->
+  <div class="container">
+    <div class="header">
+      <img src="logo.png" alt="Logo" class="logo" />
+      <h1>Download App!</h1>
+    </div>
+    <!-- Instructions in Arabic (RTL) -->
+    <div class="instructions">
+      <h2>كيفية تثبيت التطبيق :</h2>
+      <ol>
+        <li>اضغط على زر "Open App".</li>
+        <li>بعد فتح التطبيق، اضغط على زر المشاركة في المتصفح (رمز السهم أو المستطيل).</li>
+        <li>اختر "Add to Home Screen" أو "إضافة إلى الشاشة الرئيسية".</li>
+      </ol>
+      <p>
+        لمزيد من التفاصيل، تواصل معنا علي 
+        <a href="https://www.instagram.com/vibetunes2025?igsh=b2M3NW42bXd4dmo0" target="_blank" style="text-decoration: none; margin-right: 10px;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram" style="width:24px; height:24px; vertical-align:middle;">
+        </a>
+        <a href="https://wa.me/201202077813" target="_blank" style="text-decoration: none;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:36px; height:36px; vertical-align:middle;">
+        </a>
+      </p>
+    </div>
+    <!-- Button to open the app placed after the instructions -->
+    <a href="http://vibetunes.oddevelopment.online/" class="open-btn">
+      Open App
+      <svg class="open-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+        <polyline points="15 3 21 3 21 9" />
+        <line x1="10" y1="14" x2="21" y2="3" />
+      </svg>
+    </a>
+  </div>
+</body>
+</html>
